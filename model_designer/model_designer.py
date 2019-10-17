@@ -1,9 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import os
-import datetime
-import numpy as np
 from basic_class.basic_class import basic_class
 
 class model_designer(basic_class):
