@@ -5,10 +5,10 @@ from basic_class.basic_class import basic_class
 
 
 class data_designer(basic_class):
-    def __init__(self, conf_file, aug_file):
+    def __init__(self, data_conf, aug_conf):
         super().__init__()
-        self.conf_file = conf_file
-        self.aug_file = aug_file
+        self.data_conf = data_conf
+        self.aug_conf = aug_conf
 
     def prepare_data(self):
         pass

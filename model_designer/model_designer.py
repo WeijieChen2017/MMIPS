@@ -4,9 +4,9 @@
 from basic_class.basic_class import basic_class
 
 class model_designer(basic_class):
-    def __init__(self, conf_file):
+    def __init__(self, model_conf):
         super().__init__()
-        self.conf_file = conf_file
+        self.conf_file = model_conf
 
     def design_model(self):
         model_type = self.conf_file['model_type']

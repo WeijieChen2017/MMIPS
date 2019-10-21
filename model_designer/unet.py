@@ -65,8 +65,8 @@ def unet(img_shape, out_ch=1, start_ch=64, depth=4, inc_rate=2., activation='rel
     return Model(inputs=i, outputs=o)
 
 class unet_candidate():
-    def __init__(self, conf_file):
-        self.conf_file = conf_file
+    def __init__(self, model_conf):
+        self.model_conf = model_conf
 
     def output_model(self):
         return unet(img_shape=self.conf_file["image_shape"],

@@ -4,10 +4,10 @@
 from basic_class.basic_class import basic_class
 
 
-class predictor(basic_class):
-    def __init__(self, conf_file):
+class predictor_supervisor(basic_class):
+    def __init__(self, pred_conf):
         super().__init__()
-        self.conf_file = conf_file
+        self.pred_conf = pred_conf
 
     def predict_on_data(self):
         pass
