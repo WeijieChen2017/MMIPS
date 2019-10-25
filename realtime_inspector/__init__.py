@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 # if __name__ == '__main__':
-#     print("Run as the main in module \"para_center\"")
+#     print("Run as the main in module \"realtime_inspector\"")
 # else:
-#     print("Initialization in module \"para_center\"")
+#     print("Initialization in module \"realtime_inspector\"")
 
 # This is designed to transfer para between different parts.

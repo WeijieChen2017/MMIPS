@@ -10,7 +10,7 @@ class model_designer(basic_class):
 
     def design_model(self):
         model_type = self.conf_file['model_type']
-        assert model_type is not None, "Model type is not spicified."
+        assert model_type is not None, "Model type is not specified."
         module = globals()[model_type](self.conf_file)
         func = getattr(module, 'output_model')
         return func()

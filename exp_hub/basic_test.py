@@ -27,9 +27,31 @@ class experiment(basic_class):
                            "upconv": True,
                            "residual": True}
 
-        self.data_conf = {}
+        # the order in pre_aug_cond is the order of pre-processing
+        self.pre_aug_conf = [
+                             {"n_method": 2,
+                              "method_relation": "parallel",
+                              "method": [{"name": "gaussian_noise", "para": [1e-3, 3e-3, 5e-3], "others": []},
+                                         {"name": "poisson_noise", "para": [1, 3, 5], "others": []}]},
+                             {"n_method": 1,
+                              "method_relation": None,
+                              "method": [{"name": "nib_smooth", "para": [5, 7, 9], "others":["affine", "header"]}]}
+                             # {"n_method": 2,
+                             #  "method_relation": "parallel",
+                             #  "method": [{"name": "gaussian_noise", "para": [1e-3, 3e-3, 5e-3], "others": []},
+                             #             {"name": "poisson_noise", "para": [1, 3, 5], "others": []}]}
+                             ]
 
         self.aug_conf = {}
+
+        self.data_conf = {"input_path": "../data_hub/breast_2d/input/*.nii",
+                          "data_storage": "memory",
+                          "pre_aug": True,
+                          "pre_aug_conf": self.pre_aug_conf,
+                          "augmentation": True,
+                          "aug_conf": self.aug_conf,
+                          "post_aug": False,
+                          "post_aug_conf": None}
 
         self.train_conf = {}
 
@@ -38,11 +60,17 @@ class experiment(basic_class):
         self.mesg_conf = {}
 
     def start_experiment(self):
-        data = data_designer(self.data_conf, self.aug_conf)
-        model = model_designer(self.model_conf)
-        trainer = trainer_supervisor(self.train_conf, model)
-        trained_model = trainer.excute(data)
-        predictor = predictor_supervisor(self.pred_conf)
-        predictor.excute(trained_model)
-        messager = messager_supervisor(self.mesg_conf)
-        messager.excute()
+        data = data_designer(self.data_conf)
+        print(data.prepare_data().shape)
+        # model = model_designer(self.model_conf)
+        # trainer = trainer_supervisor(self.train_conf, model)
+        # trained_model = trainer.excute(data)
+        # predictor = predictor_supervisor(self.pred_conf)
+        # predictor.excute(trained_model)
+        # messager = messager_supervisor(self.mesg_conf)
+        # messager.excute()
+
+
+if __name__ == "__main__":
+    exp1 = experiment()
+    exp1.start_experiment()

@@ -7,6 +7,6 @@ class basic_class:
         pass
 
     def __repr__(self):
-        class_name = self.__name__
-        class_attr = self.__dict__
-        return {class_name+'/n'+class_attr}
+        class_name = self.__class__.__name__
+        # class_attr = self.__dict__
+        return class_name
